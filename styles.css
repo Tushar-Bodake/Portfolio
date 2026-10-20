@@ -594,6 +594,98 @@ body {
 .project-link span { color: var(--blue); font-size: 17px; transition: transform .2s ease; }
 .project-link:hover span { transform: translate(3px, -3px); }
 
+.github-star-btn {
+  margin-top: 22px;
+}
+
+.github-star-button {
+  position: relative;
+  display: flex;
+  width: min(100%, 220px);
+  height: 36px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: #0a0a0a;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.github-star-button:hover,
+.github-star-button:focus-visible {
+  background: rgba(10, 10, 10, 0.96);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.75), 0 10px 24px rgba(0, 0, 0, 0.22);
+  color: #fff;
+}
+
+.github-shimmer {
+  position: absolute;
+  top: -26px;
+  right: 0;
+  width: 32px;
+  height: 128px;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(14px) rotate(12deg);
+  transition: transform 1s ease;
+}
+
+.github-star-button:hover .github-shimmer,
+.github-star-button:focus-visible .github-shimmer {
+  transform: translateX(-130px) rotate(12deg);
+}
+
+.github-label-wrap {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.github-icon {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.github-star-count {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.github-star-count svg {
+  width: 14px;
+  height: 14px;
+  color: #9b9b9b;
+  transition: color 0.3s ease;
+}
+
+.github-star-button:hover .github-star-count svg,
+.github-star-button:focus-visible .github-star-count svg {
+  color: #facc15;
+}
+
 .project-art {
   position: relative;
   display: grid;
