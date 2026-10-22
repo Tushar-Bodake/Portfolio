@@ -1,6 +1,8 @@
 const menuToggle = document.querySelector(".menu-toggle");
 const siteNav = document.querySelector("#site-nav");
 
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
 function closeMenu() {
   if (!menuToggle || !siteNav) return;
   menuToggle.setAttribute("aria-expanded", "false");
@@ -25,6 +27,23 @@ if (menuToggle && siteNav) {
   });
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth > 640) closeMenu();
+    if (window.innerWidth > 800) closeMenu();
+  });
+}
+
+if (!reduceMotion && "IntersectionObserver" in window) {
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -36px 0px" });
+
+  document.querySelectorAll(
+    ".section-label, .about-content, .project-card, .timeline-item, .toolkit-card, .highlight-card, .contact-card"
+  ).forEach((element) => {
+    element.classList.add("reveal-on-scroll");
+    revealObserver.observe(element);
   });
 }
